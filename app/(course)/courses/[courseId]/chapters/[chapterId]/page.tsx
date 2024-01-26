@@ -1,5 +1,5 @@
 const ChapterIdPage = () => {
-  return <div>ChapterIdPage</div>
+  return <div>ChapterId Page</div>
 }
 
 export default ChapterIdPage
