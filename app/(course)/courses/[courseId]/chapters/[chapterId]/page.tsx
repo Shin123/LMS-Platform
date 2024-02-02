@@ -6,6 +6,8 @@ import { VideoPlayer } from './_components/video-player'
 import { CourseEnrollButton } from './_components/course-entroll-button'
 import { Separator } from '@/components/ui/separator'
 import { Preview } from '@/components/preview'
+import { CourseProgress } from '@/components/course-progress'
+import CourseProgressButton from './_components/course-progress-button'
 
 const ChapterIdPage = async ({ params }: { params: { courseId: string; chapterId: string } }) => {
   const { userId } = auth()
@@ -43,7 +45,16 @@ const ChapterIdPage = async ({ params }: { params: { courseId: string; chapterId
 
         <div className='p-4 flex flex-col md:flex-row items-center justify-between'>
           <h2 className='text-2xl font-semibold mb-2'>{chapter.title}</h2>
-          {purchase ? <></> : <CourseEnrollButton price={course.price!} courseId={params.courseId} />}
+          {purchase ? (
+            <CourseProgressButton
+              chapterId={params.chapterId}
+              courseId={params.courseId}
+              nextChapterId={nextChapter?.id}
+              isCompleted={!!userProgress?.isCompleted}
+            />
+          ) : (
+            <CourseEnrollButton price={course.price!} courseId={params.courseId} />
+          )}
         </div>
         <Separator />
         <div>
