@@ -12,7 +12,7 @@ export default async function Dashboard() {
 
   // if (!userId) return redirect('/')
 
-  const { completedCourses, coursesInProgress } = await getDashboardCourses(userId)
+  const { completedCourses, coursesInProgress } = await getDashboardCourses(userId!)
 
   return (
     <div className='p-6 space-y-4'>
